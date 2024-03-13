@@ -29,13 +29,29 @@ void setup() {
 void loop() {
   mpu.update();
   
-  if((millis()-timer)>10){ // print data every 10ms
-	Serial.print("X : ");
-	Serial.print(mpu.getAngleX());
-	Serial.print("\tY : ");
-	Serial.print(mpu.getAngleY());
-	Serial.print("\tZ : ");
-	Serial.println(mpu.getAngleZ());
-	timer = millis();  
+  //if((millis()-timer)>10){ // print data every 10ms
+  //Serial.print(2);
+  //Serial.print(", ");
+  //Serial.print(-0.5);
+  //Serial.print(", ");
+
+	//Serial.print("X : ");
+	//Serial.print(mpu.getAngleX());
+  //Serial.println(mpu.getAccX());
+	//Serial.print("\tY : ");
+	//Serial.print(mpu.getAngleY());
+  //Serial.print(mpu.getAccY());
+	//Serial.print("\tZ : ");
+	//Serial.println(mpu.getAngleZ());
+  //Serial.print(mpu.getAccZ());
+	//timer = millis();  
+  //}
+
+  if (mpu.getAccX() < -1.5){
+    Serial.print("Attack angle : ");
+    Serial.println(mpu.getAngleY());
+    Serial.print("Face Angle : ");
+    Serial.println(mpu.getAngleZ());
+    return;
   }
 }
